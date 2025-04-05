@@ -1,14 +1,1078 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Site</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Local Services Ads</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        body { font-family: Arial; text-align: center; padding: 50px; }
-        h1 { color: #2c3e50; }
+        /* Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Google Sans', Arial, sans-serif;
+        }
+        
+        body {
+            color: #202124;
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 500;
+            color: #4285F4;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #5F6368;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #4285F4;
+        }
+        
+        .nav-links .btn {
+            background-color: #4285F4;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 4px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background-color: #F8F9FA;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #202124;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: #5F6368;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: #4285F4;
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: white;
+            color: #4285F4;
+            border: 1px solid #4285F4;
+        }
+        
+        .btn-primary:hover {
+            background-color: #3367D6;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .btn-secondary:hover {
+            background-color: #F1F3F4;
+        }
+        
+        /* Offers Section */
+        .offers {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .section-title h2 {
+            font-size: 32px;
+            color: #202124;
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            color: #5F6368;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .offer-cards {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .offer-card {
+            background-color: #F8F9FA;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .offer-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .offer-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #202124;
+        }
+        
+        .offer-card p {
+            color: #5F6368;
+        }
+        
+        /* Benefits Section */
+        .benefits {
+            padding: 60px 0;
+            background-color: #F8F9FA;
+        }
+        
+        .benefits-container {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .benefits-content {
+            flex: 1;
+        }
+        
+        .benefits-image {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .benefits-image img {
+            max-width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .benefits-list {
+            margin-top: 30px;
+        }
+        
+        .benefit-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-icon {
+            font-size: 24px;
+            color: #4285F4;
+            margin-right: 15px;
+            margin-top: 3px;
+        }
+        
+        .benefit-text h4 {
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #202124;
+        }
+        
+        .benefit-text p {
+            color: #5F6368;
+        }
+        
+        /* Services Section */
+        .services {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .service-card {
+            background-color: #F8F9FA;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .service-card h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #202124;
+        }
+        
+        .service-card p {
+            color: #5F6368;
+            font-size: 14px;
+        }
+        
+        /* Pricing Section */
+        .pricing {
+            padding: 60px 0;
+            background-color: #F8F9FA;
+        }
+        
+        .pricing-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .pricing-card {
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .pricing-card.featured {
+            border: 2px solid #4285F4;
+            position: relative;
+        }
+        
+        .pricing-card.featured::before {
+            content: "Most Popular";
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #4285F4;
+            color: white;
+            padding: 3px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 500;
+        }
+        
+        .pricing-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #4285F4;
+        }
+        
+        .pricing-card .price {
+            font-size: 36px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #202124;
+        }
+        
+        .pricing-card .price span {
+            font-size: 16px;
+            color: #5F6368;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-card ul li {
+            margin-bottom: 10px;
+            color: #5F6368;
+        }
+        
+        /* How It Works Section */
+        .how-it-works {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            position: relative;
+        }
+        
+        .steps::before {
+            content: "";
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background-color: #DADCE0;
+            z-index: 1;
+        }
+        
+        .step {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            width: 22%;
+        }
+        
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background-color: #4285F4;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 500;
+            margin: 0 auto 20px;
+        }
+        
+        .step h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #202124;
+        }
+        
+        .step p {
+            color: #5F6368;
+        }
+        
+        /* Budget Calculator */
+        .calculator {
+            padding: 60px 0;
+            background-color: #F8F9FA;
+        }
+        
+        .calculator-form {
+            max-width: 600px;
+            margin: 40px auto 0;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: #202124;
+        }
+        
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #DADCE0;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        
+        .form-group select {
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 20px;
+        }
+        
+        .calculate-btn {
+            width: 100%;
+            padding: 12px;
+            background-color: #4285F4;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .calculate-btn:hover {
+            background-color: #3367D6;
+        }
+        
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #E8F0FE;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: 500;
+            color: #202124;
+            display: none;
+        }
+        
+        /* CTA Section */
+        .cta {
+            padding: 80px 0;
+            background-color: #4285F4;
+            color: white;
+            text-align: center;
+        }
+        
+        .cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+        
+        .cta p {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+        
+        .cta .btn {
+            background-color: white;
+            color: #4285F4;
+            font-size: 18px;
+            padding: 15px 30px;
+        }
+        
+        .cta .btn:hover {
+            background-color: #F1F3F4;
+        }
+        
+        /* FAQ Section */
+        .faq {
+            padding: 60px 0;
+            background-color: white;
+        }
+        
+        .faq-item {
+            margin-bottom: 15px;
+            border-bottom: 1px solid #DADCE0;
+        }
+        
+        .faq-question {
+            padding: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-weight: 500;
+            color: #202124;
+        }
+        
+        .faq-question::after {
+            content: "+";
+            font-size: 20px;
+            color: #5F6368;
+        }
+        
+        .faq-question.active::after {
+            content: "-";
+        }
+        
+        .faq-answer {
+            padding-bottom: 20px;
+            color: #5F6368;
+            display: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #F8F9FA;
+            padding: 40px 0;
+            color: #5F6368;
+        }
+        
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .footer-logo {
+            font-size: 20px;
+            font-weight: 500;
+            color: #4285F4;
+            margin-bottom: 15px;
+        }
+        
+        .footer-links {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #202124;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column ul li a {
+            color: #5F6368;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-column ul li a:hover {
+            color: #4285F4;
+        }
+        
+        .copyright {
+            margin-top: 40px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #DADCE0;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .offer-cards,
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .pricing-cards {
+                grid-template-columns: 1fr;
+                max-width: 500px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .benefits-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .steps {
+                flex-direction: column;
+                gap: 40px;
+            }
+            
+            .steps::before {
+                display: none;
+            }
+            
+            .step {
+                width: 100%;
+            }
+            
+            .footer-container {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .offer-cards,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .section-title h2 {
+                font-size: 26px;
+            }
+        }
     </style>
 </head>
 <body>
-    <h1>🎉 Success!</h1>
-    <p>Your GitHub Pages site is working!</p>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">Local Services Ads</div>
+            <div class="nav-links">
+                <a href="#">Schedule a meeting</a>
+                <a href="#">Sign in</a>
+                <a href="#" class="btn">Get started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Choose your offer and get up to $1500 in Ads credit</h1>
+            <p>New advertiser? Choose between three attractive offers, based on your budget, to jumpstart your first campaign.</p>
+            <div class="hero-btns">
+                <a href="#" class="btn btn-primary">Choose now</a>
+                <a href="#" class="btn btn-secondary">1-833-272-1444</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="offers">
+        <div class="container">
+            <div class="offer-cards">
+                <div class="offer-card">
+                    <h3>Get more clients for your dental clinic</h3>
+                </div>
+                <div class="offer-card">
+                    <h3>Get more clients for your real estate firm</h3>
+                </div>
+                <div class="offer-card">
+                    <h3>Get more customers for your repair shop</h3>
+                </div>
+                <div class="offer-card">
+                    <h3>Get more customers for your local business</h3>
+                </div>
+            </div>
+            <p style="text-align: center; margin-bottom: 30px;">Show up when local customers search for your services, and build confidence with a Google badge. With Local Services Ads, you only pay for customers — not clicks.</p>
+            <div style="text-align: center;">
+                <a href="#" class="btn btn-primary">Get started</a>
+                <p style="margin-top: 15px;">1-833-272-1444</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">
+                <h2>What services do you offer?</h2>
+                <p>We'll show you how to stand out when local customers are looking for the services you offer. If you aren't in any of these eligible industries below, try Google Ads</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <h3>Home</h3>
+                    <p>ex. plumbing, contracting, moving</p>
+                </div>
+                <div class="service-card">
+                    <h3>Business</h3>
+                    <p>ex. lawyers, accounting, real estate</p>
+                </div>
+                <div class="service-card">
+                    <h3>Health</h3>
+                    <p>ex. dentist, optometrist, primary care</p>
+                </div>
+                <div class="service-card">
+                    <h3>Learning</h3>
+                    <p>ex. preschool, tutoring, first aid training</p>
+                </div>
+                <div class="service-card">
+                    <h3>Care</h3>
+                    <p>ex. child care, pet training, animal shelter</p>
+                </div>
+                <div class="service-card">
+                    <h3>Wellness</h3>
+                    <p>ex. massage, yoga studio, personal training</p>
+                </div>
+                <div class="service-card">
+                    <h3>Beauty</h3>
+                    <p>ex. aesthetician, hair stylist, lash extensions</p>
+                </div>
+                <div class="service-card">
+                    <h3>Automotive</h3>
+                    <p>ex. mechanics, installers, body shops</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-title">
+                <h2>Attract more local customers to your business</h2>
+            </div>
+            <div class="benefits-container">
+                <div class="benefits-content">
+                    <div class="benefits-list">
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Stand out</h4>
+                                <p>Show up at the top of Google search results with a dedicated ad unit.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-shield-alt"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Inspire confidence</h4>
+                                <p>Build trust with customers through Google screening and badges.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Connect locally</h4>
+                                <p>Reach customers in your service area when they're searching for help.</p>
+                            </div>
+                        </div>
+                        <div class="benefit-item">
+                            <div class="benefit-icon">
+                                <i class="fas fa-dollar-sign"></i>
+                            </div>
+                            <div class="benefit-text">
+                                <h4>Pay for leads</h4>
+                                <p>Only pay when a customer contacts you, not for clicks or impressions.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="benefits-image">
+                    <h3>Stand out on Google</h3>
+                    <p>Show up on Google Search and get discovered by more customers with Local Services Ads. Make the most of your budget by only showing up in your local area.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Choose a sign-up offer to jumpstart your first campaign</h2>
+                <p>Select an offer that fits your monthly budget and sign up when ready. You'll receive your Ads credit after you meet the minimum spend requirement for the offer you selected. Terms and conditions apply.</p>
+            </div>
+            <div class="pricing-cards">
+                <div class="pricing-card">
+                    <h3>OFFER A</h3>
+                    <div class="price">$500</div>
+                    <p>in Ads credit</p>
+                    <ul>
+                        <li>Spend $500 with Google Ads in the first 60 days to unlock the credit.</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Select an offer to continue</a>
+                </div>
+                <div class="pricing-card featured">
+                    <h3>OFFER B</h3>
+                    <div class="price">$1000</div>
+                    <p>in Ads credit</p>
+                    <ul>
+                        <li>Spend $1500 with Google Ads in the first 60 days to unlock the credit.</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Select an offer to continue</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>OFFER C</h3>
+                    <div class="price">$1500</div>
+                    <p>in Ads credit</p>
+                    <ul>
+                        <li>Spend $3000 with Google Ads in the first 60 days to unlock the credit.</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Select an offer to continue</a>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 30px;">
+                <a href="#" class="btn btn-secondary">Claim Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Learn how Local Services Ads works</h2>
+                <p>Discover how easy it is to get started in a few simple steps.</p>
+            </div>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h4>Tell us about your business</h4>
+                    <p>Start by adding your business name, service type, location, and cover off on all the basics.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h4>Set your budget</h4>
+                    <p>Complete screening and verification</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h4>Complete screening and verification</h4>
+                    <p>Go live and get discovered</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h4>Go live and get discovered</h4>
+                    <p>A local ad for an auto lock service.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Budget Calculator -->
+    <section class="calculator">
+        <div class="container">
+            <div class="section-title">
+                <h2>Stay in control of your spending</h2>
+                <p>Estimate your budget with our budget tool and choose ad spend based on the number of new leads you want every week. Once you're set up, you can come back to adjust your ads anytime.</p>
+            </div>
+            <div class="calculator-form">
+                <h3 style="text-align: center; margin-bottom: 20px;">Calculate your budget</h3>
+                <div class="form-group">
+                    <label for="postal-code">Enter Postal code</label>
+                    <input type="text" id="postal-code" placeholder="e.g. 90210">
+                </div>
+                <div class="form-group">
+                    <label for="leads">How many leads per month?</label>
+                    <select id="leads">
+                        <option value="">Select</option>
+                        <option value="5">5 leads</option>
+                        <option value="10">10 leads</option>
+                        <option value="20">20 leads</option>
+                        <option value="30">30 leads</option>
+                        <option value="50">50+ leads</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="industry">Select your industry</label>
+                    <select id="industry">
+                        <option value="">Select</option>
+                        <option value="plumbing">Plumbing</option>
+                        <option value="electrical">Electrical</option>
+                        <option value="cleaning">Cleaning</option>
+                        <option value="moving">Moving</option>
+                        <option value="handyman">Handyman</option>
+                    </select>
+                </div>
+                <button class="calculate-btn">Estimate budget</button>
+                <div class="result" id="result">
+                    Your estimated monthly budget: <span id="estimated-budget">$500</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <h2>Get more customers and grow your business</h2>
+            <p>Start now or call to get personalized set-up support from a Google specialist.</p>
+            <a href="#" class="btn">1-833-272-1444</a>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-title">
+                <h2>Frequently asked questions</h2>
+                <p style="text-align: center; margin-bottom: 20px;">Expand all</p>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What are Google Local Service Ads?</div>
+                <div class="faq-answer">
+                    <p>Google Local Services Ads are a type of advertising that helps local service businesses connect with customers searching for their services on Google. These ads appear at the top of search results and include a Google guarantee badge to help build trust with potential customers.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do Local Service Ads work?</div>
+                <div class="faq-answer">
+                    <p>Local Services Ads work by displaying your business at the top of Google search results when potential customers search for services you offer in your area. You only pay when a customer contacts you directly through the ad (via phone call or message), not for clicks or impressions.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">What types of local service businesses are eligible for Local Service Ads?</div>
+                <div class="faq-answer">
+                    <p>Many local service businesses are eligible, including plumbers, electricians, locksmiths, HVAC technicians, cleaners, painters, roofers, and more. The available categories vary by location, so check Google's Local Services Ads website for the most up-to-date information in your area.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How much does Google Local Service Ads cost?</div>
+                <div class="faq-answer">
+                    <p>With Local Services Ads, you only pay when a potential customer contacts you through the ad. The cost per lead varies by industry and location. You set a weekly budget that determines how many leads you're likely to receive, and you can adjust this budget at any time.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">How do I set up Google Local Service Ads?</div>
+                <div class="faq-answer">
+                    <p>Setting up Local Services Ads involves creating an account, completing your business profile, passing Google's screening process (which may include background checks), setting your budget and service area, and then launching your ads. The entire process can be completed online.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div>
+                    <div class="footer-logo">Local Services Ads</div>
+                    <p>Helping local businesses connect with customers in their area.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-column">
+                        <h4>Products</h4>
+                        <ul>
+                            <li><a href="#">Local Services Ads</a></li>
+                            <li><a href="#">Google Ads</a></li>
+                            <li><a href="#">Google My Business</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Resources</h4>
+                        <ul>
+                            <li><a href="#">Help Center</a></li>
+                            <li><a href="#">Success Stories</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Company</h4>
+                        <ul>
+                            <li><a href="#">About</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Google Local Services Ads. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                question.classList.toggle('active');
+                
+                if (question.classList.contains('active')) {
+                    answer.style.display = 'block';
+                } else {
+                    answer.style.display = 'none';
+                }
+            });
+        });
+        
+        // Budget Calculator Functionality
+        document.querySelector('.calculate-btn').addEventListener('click', (e) => {
+            e.preventDefault();
+            const postalCode = document.getElementById('postal-code').value;
+            const leads = document.getElementById('leads').value;
+            const industry = document.getElementById('industry').value;
+            
+            if (postalCode && leads && industry) {
+                // Simple calculation for demo purposes
+                const baseRates = {
+                    plumbing: 50,
+                    electrical: 60,
+                    cleaning: 40,
+                    moving: 55,
+                    handyman: 45
+                };
+                
+                const leadMultipliers = {
+                    '5': 1,
+                    '10': 0.9,
+                    '20': 0.8,
+                    '30': 0.75,
+                    '50': 0.7
+                };
+                
+                const baseRate = baseRates[industry];
+                const leadMultiplier = leadMultipliers[leads];
+                const estimatedBudget = Math.round(baseRate * leads * leadMultiplier);
+                
+                document.getElementById('estimated-budget').textContent = `$${estimatedBudget}`;
+                document.getElementById('result').style.display = 'block';
+            } else {
+                alert('Please fill out all fields to estimate your budget.');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        document.querySelector('.nav-toggle').addEventListener('click', () => {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+    </script>
 </body>
 </html>
