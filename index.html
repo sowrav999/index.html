@@ -1076,3 +1076,152 @@
     </script>
 </body>
 </html>
+<!-- STEP 1: Add this HTML where you want the lead form -->
+<div class="lead-form">
+  <h3>Need a Service? Get Free Quotes!</h3>
+  <form id="serviceRequestForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="tel" name="phone" placeholder="Phone Number" required>
+    <select name="service" required>
+      <option value="">Select Service</option>
+      <option value="plumbing">Plumbing</option>
+      <option value="electrical">Electrical</option>
+    </select>
+    <button type="submit">Request Quotes</button>
+  </form>
+</div>
+
+<!-- STEP 2: Add this JavaScript before </body> -->
+<script>
+  document.getElementById('serviceRequestForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    // Save lead to localStorage (or send to your email/server)
+    const lead = {
+      name: this.name.value,
+      phone: this.phone.value,
+      service: this.service.value,
+      date: new Date().toLocaleString()
+    };
+    
+    // For now, we'll just display it (replace with actual storage)
+    console.log('New Lead:', lead); 
+    alert('We\'ve received your request! 3 providers will contact you soon.');
+    
+    // TODO: Connect to Formspree/Google Sheets to store leads
+    // TODO: Notify partnered businesses about this lead
+  });
+</script>
+
+<!-- STEP 3: Add this CSS to your <style> section -->
+<style>
+  .lead-form {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+  }
+  .lead-form input, .lead-form select {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ddd;
+  }
+</style>
+<!-- Premium Listing Section -->
+<div class="premium-listings">
+  <h2>Featured Providers</h2>
+  <div class="premium-badge">⭐ Top Rated</div>
+  
+  <div class="premium-service">
+    <h3>Elite Plumbing Co.</h3>
+    <p>24/7 emergency services</p>
+    <button onclick="contactBusiness('elite-plumbing')">Contact Now</button>
+  </div>
+</div>
+
+<script>
+  // Charge businesses for these featured spots
+  function contactBusiness(businessId) {
+    console.log('Connecting to:', businessId);
+    // TODO: Track this as a lead for billing
+  }
+</script>
+
+<style>
+  .premium-listings {
+    border: 2px solid #3498db;
+    padding: 15px;
+    margin: 25px 0;
+  }
+  .premium-badge {
+    background: gold;
+    display: inline-block;
+    padding: 3px 10px;
+    font-weight: bold;
+  }
+</style>
+<!-- STEP 1: Add this in <head> -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_CLIENT_ID"
+     crossorigin="anonymous"></script>
+
+<!-- STEP 2: Place this where ads should appear -->
+<div class="ad-container">
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-YOUR_CLIENT_ID",
+      enable_page_level_ads: true
+    });
+  </script>
+</div>
+
+<style>
+  .ad-container {
+    margin: 20px 0;
+    min-height: 90px;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+<!-- STEP 1: Add this in <head> -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_CLIENT_ID"
+     crossorigin="anonymous"></script>
+
+<!-- STEP 2: Place this where ads should appear -->
+<div class="ad-container">
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-YOUR_CLIENT_ID",
+      enable_page_level_ads: true
+    });
+  </script>
+</div>
+
+<style>
+  .ad-container {
+    margin: 20px 0;
+    min-height: 90px;
+    background: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+<div class="affiliate-tool">
+  <h4>Recommended for Businesses:</h4>
+  <a href="https://squareup.com/i/AFFILIATE_ID" target="_blank">
+    <img src="https://example.com/square-logo.png" alt="Square Payments">
+  </a>
+  <p>Get $1,000 in free credit when you sign up!</p>
+</div>
+
+<style>
+  .affiliate-tool {
+    border: 1px dashed #ccc;
+    padding: 15px;
+    text-align: center;
+    margin: 20px 0;
+  }
+</style>
